@@ -15,6 +15,9 @@ db.sequelize.sync()
 
 
 app.use("/service", require("./router/service"))
+app.use("/login", require("./router/user"))
+app.use("/address", require("./router/address"))
+app.use("/bid", require("./router/bid"))
 
 app.listen(3300, () => {
   console.log('端口3300')
