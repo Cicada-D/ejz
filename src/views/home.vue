@@ -62,7 +62,7 @@
 
 .van-swipe__indicators {
     bottom: 0%;
-    
+
 }
 
 :deep(.van-swipe__indicator) {
@@ -140,11 +140,12 @@
         <van-col span="22">
             <lunbo></lunbo>
         </van-col>
-        <van-col span="22" >
+        <van-col span="22">
             <van-swipe class="my-swipe">
                 <van-swipe-item v-for="item in items">
                     <van-row style="" gutter="10">
-                        <van-col span="6" v-for="key in item" style="text-align: center; margin-bottom: 10px;" @click="changeroute()">
+                        <van-col span="6" v-for="key in item" style="text-align: center; margin-bottom: 10px;"
+                            @click="changeroute()">
                             <!-- <van-icon size="30" class="iconfont" class-prefix='icon' :name='key.src' /> -->
                             <van-image width="40px" height="40px" fit="contain" :src="key.src" />
                             <div style="font-size: 14px; margin-top: 8px;">{{ key.title }}</div>
@@ -165,13 +166,16 @@
         </van-col>
     </van-row>
 
-    <van-row justify="space-around" style="margin-top: 10px; min-width: 390px; background-color: rgb(243, 244, 246); padding-top: 10px;">
+    <van-row justify="space-around"
+        style="margin-top: 10px; min-width: 390px; background-color: rgb(243, 244, 246); padding-top: 10px;">
         <van-col span="22">
-            <van-cell title-style="font-size: large;" title="热门项目" is-link value="更多内容" style="background-color: rgb(243, 244, 246) ;"/>
+            <van-cell title-style="font-size: large;" title="热门项目" is-link value="更多内容"
+                style="background-color: rgb(243, 244, 246) ;" />
         </van-col>
         <van-col span="10" v-for="li in list">
             <van-card :price="li.price" :title="li.title"
-                style=" border-radius: 10px; background-color: white; margin-bottom: 10px;" :thumb="li.thumb" @click="changeroute()">
+                style=" border-radius: 10px; background-color: white; margin-bottom: 10px;" :thumb="li.thumb"
+                @click="changeroute()">
             </van-card>
         </van-col>
     </van-row>
@@ -189,8 +193,8 @@ const value = ref('');
 // const onSearch = (val) => showToast(val);
 // const onClickButton = () => showToast(value.value);
 
-const items = ref({
-    item1: [
+const items = ref([
+    [
         {
             src: '/src/assets/项目分类/首页/图标/开荒保洁.png',
             title: '开荒保洁'
@@ -219,7 +223,7 @@ const items = ref({
         }
     ],
 
-    item2: [
+    [
         {
             src: '/src/assets/项目分类/首页/图标/洗衣机.png',
             title: '洗衣机清洗'
@@ -241,7 +245,7 @@ const items = ref({
         }
     ],
 
-})
+])
 
 
 const list = ref([

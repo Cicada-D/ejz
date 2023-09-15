@@ -60,7 +60,7 @@
 
             <van-col span="22">
                 <van-row justify="center" style="" gutter="10">
-                    <van-col span="5" v-for="key in items" style="text-align: center;" @click="changeroute()">
+                    <van-col span="5" v-for="key in items" style="text-align: center;" @click="changeroute(key.name)">
                         <!-- <van-icon size="30" class="iconfont" class-prefix='icon' :name='key.src' /> -->
                         <van-image width="40px" height="40px" fit="contain" :src="key.src" />
                         <div>{{ key.title }}</div>
@@ -103,14 +103,17 @@
 
 import { ref, onMounted } from 'vue';
 import vantabber from './vantabber.vue';
+import { useRoute, useRouter } from 'vue-router';
 const items = ref([
     {
         src: '/src/assets/项目分类/我的/图片/我的-我的钱包.png',
-        title: '我的钱包'
+        title: '我的钱包',
+        name: '/wdqb'
     },
     {
         src: '/src/assets/项目分类/我的/图片/专属会员.png',
-        title: '专属会员'
+        title: '专属会员',
+        name: ''
     }, {
         src: '/src/assets/项目分类/我的/图片/充值兑换.png',
         title: '充值兑换'
@@ -125,7 +128,8 @@ const items = ref([
         title: '次卡购买'
     }, {
         src: '/src/assets/项目分类/我的/图片/地址管理.jpg',
-        title: '地址管理'
+        title: '地址管理',
+        name: '/dzgl'
     }, {
         src: '/src/assets/项目分类/我的/图片/我的消息.png',
         title: '我的消息'
@@ -149,4 +153,9 @@ const items1 = ref([
     },
 ])
 
+const router = new useRouter()
+
+const changeroute = (name) => {
+    router.push(name)
+}
 </script>

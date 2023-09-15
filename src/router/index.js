@@ -47,6 +47,22 @@ const router = createRouter({
       path: '/two_three',
       name: 'two_three',
       component: () => import('../views/order/ordertwo_three.vue')
+    },{
+      path: '/wdqb',
+      name: 'wdqb',
+      component: () => import('../views/personal/wdqb.vue')
+    },{
+      path: '/dzgl',
+      name: 'dzgl',
+      component: () => import('../views/personal/dzgl.vue')
+    },{
+      path: '/tjxdz',
+      name: 'tjxdz',
+      component: () => import('../views/personal/tjxdz.vue')
+    },{
+      path: '/ddtj',
+      name: 'ddtj',
+      component: () => import('../views/personal/ddtj.vue')
     }
   ],
 });
