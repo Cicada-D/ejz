@@ -16,15 +16,21 @@
 
 <template>
   <van-row>
-    <van-col span="24" style="border: 1px solid black">
+    <van-col span="24">
       <van-swipe>
-        <van-swipe-item>13213123</van-swipe-item>
-        <van-swipe-item>2123213</van-swipe-item>
-        <van-swipe-item>313123</van-swipe-item>
-        <van-swipe-item>4123123</van-swipe-item>
+        <van-swipe-item v-for="item in items.list">
+          <van-image :src="item.src" />
+        </van-swipe-item>
       </van-swipe>
     </van-col>
   </van-row>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const items = defineProps({
+  list: Object
+})
+console.log(items.list[0])
+</script>

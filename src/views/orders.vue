@@ -67,4 +67,15 @@ const forders = ref([
     yfje: '800',
   },
 ])
+
+
+
+// beforeRouteEnter(to, from, next) {
+//   // 在组件生命周期beforeCreate阶段触发
+//   console.log('组件内路由前置守卫 beforeRouteEnter', this) // 访问不到this
+//   next((vm) => {
+//     console.log('组件内路由前置守卫 vm', vm) // vm 就是this
+//   })
+// }
+
 </script>

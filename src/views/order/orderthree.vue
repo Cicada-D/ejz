@@ -37,13 +37,13 @@ p {
         <van-col span="12" style="padding-right: 0;">
             <van-cell class="title" title="服务类型" title-style="text-align: center" />
             <van-list v-model:loading="loading" :finished="finished" @load="onLoad">
-                <van-cell v-for="item in list" :key="item" :title="item" />
+                <van-cell v-for="item in list.list[1].ttype.split(',')" :key="item" :title="item" />
             </van-list>
         </van-col>
         <van-col span="12" style="padding-left: 0;">
             <van-cell class="title" title="会员价格" title-style="text-align: center" />
             <van-list v-model:loading="loading" :finished="finished" @load="onLoad">
-                <van-cell v-for="item in list" :key="item" :title="item" />
+                <van-cell v-for="item in list.list[0].jiage.split(',')" :key="item" :title="item" />
             </van-list>
         </van-col>
         <van-col span="24" style="border-top: 1px solid rgb(213, 211, 211);">
@@ -66,9 +66,15 @@ p {
 <script setup>
 import { ref } from 'vue'
 
-const list = ref([
-    1, 2, 3, 4
-]);
+
+
+
+const list = defineProps({
+    list: Object
+})
+// console.log(list.listjg.split(','))
+// console.log(list.list[1].ttype.split(','))
+
 const loading = ref(false);
 const finished = ref(true);
 

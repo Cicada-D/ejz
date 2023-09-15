@@ -3,9 +3,7 @@
 </style>
 
 <template>
-    <vannavbar>
-        
-    </vannavbar>
+    <vannavbar></vannavbar>
 </template>
 
 <script setup>

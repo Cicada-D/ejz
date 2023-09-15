@@ -34,7 +34,14 @@ const router = createRouter({
       path: '/orders', 
       name: 'orders',
       component: () => import('../views/orders.vue'),
-     
+      // beforeEnter: (to, from, next) => {
+      //   if(0){
+      //     next()
+      //   }else {
+      //     // router.push('/login')
+      //     next()
+      //   }
+      // }
     },{
       path: '/order',
       name: 'order',
@@ -63,6 +70,14 @@ const router = createRouter({
       path: '/ddtj',
       name: 'ddtj',
       component: () => import('../views/personal/ddtj.vue')
+    },{
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/login.vue')
+    },{
+      path: '/regist',
+      name: 'regist',
+      component: () => import('../views/regist.vue')
     }
   ],
 });

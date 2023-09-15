@@ -59,6 +59,6 @@ const list = ref([
 const router = useRouter()
 
 const changeroute = () => {
-    router.push('two_three')
+    router.push('../two_three')
 }
 </script>

@@ -36,7 +36,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter()
 
 const changeroute = () => {
-    router.push('two_three')
+    router.push('../two_three')
 }
 const list = ref([
     {

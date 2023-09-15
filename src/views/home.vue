@@ -121,7 +121,6 @@
                 name="arrow-down"
                 size="10"
                 style="
-                  border-right: 1px solid black;
                   width: 28px;
                   line-height: 20px;
                 "
@@ -151,7 +150,7 @@
     style="min-width: 390px; border-radius: 10%; background-color: white"
   >
     <van-col span="22">
-      <lunbo></lunbo>
+      <lunbo :list="lunbotu"></lunbo>
     </van-col>
     <van-col span="22">
       <van-swipe class="my-swipe">
@@ -161,7 +160,7 @@
               span="6"
               v-for="key in item"
               style="text-align: center; margin-bottom: 10px"
-              @click="changeroute()"
+              @click="changeroute(key.title,key.type,key.jiage)"
             >
               <!-- <van-icon size="30" class="iconfont" class-prefix='icon' :name='key.src' /> -->
               <van-image
@@ -180,7 +179,8 @@
     </van-col>
     <van-col span="22" style="background-color: white">
       <van-row justify="space-around">
-        <van-col span="10"> 1 </van-col>
+        <van-col span="10"> 
+        </van-col>
         <van-col span="10"> 1 </van-col>
       </van-row>
     </van-col>
@@ -195,7 +195,7 @@
       padding-top: 10px;
     "
   >
-    <van-col span="22">
+    <van-col span="24">
       <van-cell
         title-style="font-size: large;"
         title="热门项目"
@@ -204,7 +204,7 @@
         style="background-color: rgb(243, 244, 246)"
       />
     </van-col>
-    <van-col span="10" v-for="li in list">
+    <van-col span="11" v-for="li in list">
       <van-card
         :price="li.price"
         :title="li.title"
@@ -241,77 +241,89 @@ let items = ref()
 const init_Item_List = async () => {
   const res = (await get_Service_List()).data
   items.value = res
+  console.log(res)
+  items.value[0][0].type = '无家具装修,有家具装修,别墅开荒保洁'
+  items.value[0][0].jiage = '50,80,100'
+  // console.log(items.value[0][0].type.split(','))
 }
 
 init_Item_List()
-console.log(items)
+// console.log(items)
 const list = ref([
   {
     desc: '描述信息',
     title: '商品标题',
     price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
+    thumb: '/src/assets/项目分类/首页/图标/clear1.jpg',
   },
   {
     desc: '描述信息',
     title: '商品标题',
     price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
+    thumb: '/src/assets/项目分类/首页/图标/clear2.jpg',
+
   },
   {
     desc: '描述信息',
     title: '商品标题',
     price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
+    thumb: '/src/assets/项目分类/首页/图标/clear3.jpg',
+
   },
   {
     desc: '描述信息',
     title: '商品标题',
     price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
+    thumb: '/src/assets/项目分类/首页/图标/clear4.jpg',
+
   },
   {
     desc: '描述信息',
     title: '商品标题',
     price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
+    thumb: '/src/assets/项目分类/首页/图标/clear5.jpg',
+
   },
   {
     desc: '描述信息',
     title: '商品标题',
     price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
+    thumb: '/src/assets/项目分类/首页/图标/clear6.jpg',
+
   },
   {
     desc: '描述信息',
     title: '商品标题',
     price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
+    thumb: '',
+
   },
   {
     desc: '描述信息',
     title: '商品标题',
     price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
-  },
-  {
-    desc: '描述信息',
-    title: '商品标题',
-    price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
-  },
-  {
-    desc: '描述信息',
-    title: '商品标题',
-    price: 0,
-    thumb: 'https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg',
+    thumb: '/src/assets/项目分类/首页/图标/clear8.jpg',
+
   },
 ])
 
 // const that = this
 const router = useRouter()
 
-const changeroute = () => {
-  router.push('two_three')
+const changeroute = (name,ttype,jiage) => {
+  router.push({
+    name: 'two_three',
+    query:{
+      title: name,
+      ttype: ttype,
+      jiage: jiage
+    }
+  })
 }
+
+const lunbotu = ref([
+  {
+    src: '/src/assets/项目分类/首页/图标/clear7.jpg'
+  }
+])
 </script>

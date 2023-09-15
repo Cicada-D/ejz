@@ -28,9 +28,7 @@
                     </div>
                 </template>
                 <template #label>
-                    <van-button round> 无家具全装修</van-button>
-                    <van-button round> 有家具全装修</van-button>
-                    <van-button round> 别墅开荒保洁</van-button>
+                    <van-button @click="select(item)" style="margin: 5px ;" round v-for="(item, index) in items.list.split(',')"> {{item}}</van-button>
                 </template>
             </van-cell>
         </van-col>
@@ -38,6 +36,17 @@
 </template>
 
 <script setup>
+import {ref} from 'vue'
+import {useRouter,useRoute} from 'vue-router'
 
+const items = defineProps({
+    list: String
+})
+
+console.log(items.list.split(','))
+
+const select = (item) => {
+    console.log(item)
+}
 
 </script>

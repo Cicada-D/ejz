@@ -16,10 +16,11 @@
 </style>
 
 <template>
-    <van-nav-bar title="标题" left-text="返回" left-arrow @click-left="onClickLeft" />
-    <lunbo></lunbo>
-    <ordertwo></ordertwo>
-    <orderthree></orderthree>
+    <van-nav-bar :title="title" left-text="返回" left-arrow @click-left="onClickLeft" />
+    <lunbo :list="lunbotu"></lunbo>
+    
+    <ordertwo :list="ttype"></ordertwo>
+    <orderthree :list="item"></orderthree>
     
     <van-sticky :offset-bottom="20" position="bottom">
         <van-button @click="yuyue">点击预约</van-button>
@@ -31,14 +32,33 @@
 import lunbo from '../lunbo/lunboone.vue'
 import ordertwo from '../order/ordertwo.vue'
 import orderthree from '../order/orderthree.vue'
-import {useRouter} from 'vue-router'
+import {useRouter,useRoute} from 'vue-router'
+import {ref} from 'vue'
+// import { type } from 'express/lib/response'
 
 const onClickLeft = () => history.back();
 
 const router = useRouter()
+const route = useRoute()
+const title = route.query.title
+const ttype = route.query.ttype
+const jiage = route.query.jiage
+
+const item = ref([
+    {
+        jiage:jiage
+    },{
+        ttype:ttype
+    }
+])
 
 const yuyue = () => {
     router.push('/ddtj')
 }
 
+const lunbotu = ref([
+  {
+    src: '/src/assets/项目分类/首页/图标/clear7.jpg'
+  }
+])
 </script>
