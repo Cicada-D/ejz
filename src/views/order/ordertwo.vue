@@ -45,8 +45,12 @@ const items = defineProps({
 
 console.log(items.list.split(','))
 
-const select = (item) => {
+
+const emit = defineEmits(['func'])
+
+const select = (item) => {  
     console.log(item)
+    emit('func', item)
 }
 
 </script>

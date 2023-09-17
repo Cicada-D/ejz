@@ -62,7 +62,11 @@ import { ref } from 'vue';
 const titlen = ref('编辑地址')
 
 const username = ref('');
-const password = ref('');
+const dianhua = ref('');
+const dizhi = ref('');
+const xxdizhi = ref('');
+const jzmianji = ref('');
+const blmianjii = ref('');
 const onSubmit = (values) => {
     console.log('submit', values);
 };

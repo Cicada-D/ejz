@@ -34,14 +34,14 @@ const router = createRouter({
       path: '/orders', 
       name: 'orders',
       component: () => import('../views/orders.vue'),
-      // beforeEnter: (to, from, next) => {
-      //   if(0){
-      //     next()
-      //   }else {
-      //     // router.push('/login')
-      //     next()
-      //   }
-      // }
+      beforeEnter: (to, from, next) => {
+        if(0){
+          next()
+        }else {
+          router.push('/login')
+          // next()
+        }
+      }
     },{
       path: '/order',
       name: 'order',
