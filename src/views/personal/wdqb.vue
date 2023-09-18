@@ -123,7 +123,7 @@ const onClickLeft = () => history.back();
 const titlen = ref("我的钱包")
 
 const date = ref('');
-const show = ref(false);
+var show = ref(false);
 
 const currentDate = ref(['2021', '01']);
 const columnsType = ['year', 'month'];

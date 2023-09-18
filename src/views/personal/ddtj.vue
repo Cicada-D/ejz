@@ -28,9 +28,12 @@
                     服务项目
                 </template>
             </van-cell>
-            <van-cell is-link to="/dzgl">
+            <van-cell is-link :to="dzgl">
                 <template #title>
                     地址
+                </template>
+                <template #value>
+                    {{ address }}
                 </template>
             </van-cell>
             <van-cell title="服务数量">
@@ -40,7 +43,7 @@
             </van-cell>
             <van-cell title="服务时间" is-link @click="showPopup">
                 <template #value>
-                    <span style="color: rgb(255, 102, 0);">{{ sdate }}</span>
+                    <span style="color: rgb(255, 102, 0);">{{ select_date }}</span>
                 </template>
             </van-cell>
             <van-popup v-model:show="show" style="width: 80%;">
@@ -56,7 +59,7 @@
                 placeholder="请输入留言" />
         </van-cell-group>
     </van-form>
-    <van-submit-bar :price="3050" button-text="立即预约" tip-icon="after-sale" label="订单总额" text-align="left"
+    <van-submit-bar :price="price" button-text="立即预约" tip-icon="after-sale" label="订单总额" text-align="left"
         @submit="onSubmit">
 
     </van-submit-bar>
@@ -67,19 +70,31 @@ import vannavbar from '../vannavbar.vue';
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router'
 
+import {bid_add}from '../../api/bid'
+
+
 const titlen = '订单确定'
 const show = ref(false);
 const showPopup = () => {
     show.value = true;
 };
-
+const message = ref('')
+const price = ref(3050)
 const route = useRoute()
 const type_name = route.query.type
+const address = ref(route.query.address)
+
+const dzgl = ref({
+    path: '/dzgl',
+    query: {
+        type: type_name
+    }
+})
 
 const nowDate = new Date()
 const data = ref({
     year: nowDate.getFullYear(),
-    month: nowDate.getMonth() + 1,
+    month: nowDate.getMonth(),
     date: nowDate.getDate()
 })
 console.log(data.value)
@@ -87,11 +102,23 @@ const currentDate = ref([ data.value.year, data.value.month, data.value.date]);
 const minDate = new Date(data.value.year, data.value.month, data.value.date)
 const maxDate = new Date(data.value.year, data.value.month, 30)
 
-var sdate = ref('选择时间')
+var select_date = ref('选择时间')
 const qd = ({selectedValues}) => {
     // console.log(selectedValues.join('-'));  
     show.value = false
-    sdate = selectedValues.join('-')
+    select_date = selectedValues.join('-')
 }
 
+const onSubmit = () => {
+    let list = {
+        username:localStorage.getItem('username'),
+        service:type_name,
+        address:address.value,
+        date: select_date,
+        comment: message.value,
+        tel: route.query.tel,
+        moeny:price.value
+    }
+    bid_add(list)
+}
 </script>

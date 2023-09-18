@@ -46,4 +46,5 @@ const icons = ref([
     },
 ])
 console.log(active.value)
+// localStorage.setItem('token', '0')
 </script>

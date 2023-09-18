@@ -4,11 +4,11 @@
     <vannavbar :title="titlen"></vannavbar>
     <van-form @submit="onSubmit">
         <van-cell-group inset>
-            <van-field v-model="username" name="用户名" label="用户名：" placeholder="用户名"
+            <van-field v-model="username" name="name" label="用户名：" placeholder="用户名"
                 :rules="[{ required: true, message: '请填写用户名' }]" />
-            <van-field v-model="dianhua" name="电话" label="电话：" placeholder="电话"
+            <van-field v-model="dianhua" name="tel" label="电话：" placeholder="电话"
                 :rules="[{ required: true, message: '请填写电话' }]" />
-            <van-field v-model="dizhi" name="地址" label="地址：" placeholder="地址"
+            <van-field v-model="dizhi" name="address" label="地址：" placeholder="地址"
                 :rules="[{ required: true, message: '请填写' }]" />
             <van-field v-model="xxdizhi" name="详细地址" label="详细地址：" placeholder="详细地址"
                 :rules="[{ required: true, message: 'xx小区-xx栋-xx单元-xx房间号' }]" />
@@ -43,7 +43,7 @@
             </van-popup>
             <van-field name="checkbox" label="设为默认地址">
                 <template #input>
-                    <van-checkbox v-model="checked"  />
+                    <van-checkbox v-model="checked" @click="change_tag()"/>
                 </template>
             </van-field>
         </van-cell-group>
@@ -59,6 +59,9 @@
 <script setup>
 import vannavbar from '../vannavbar.vue';
 import { ref } from 'vue';
+import { address_add } from '../../api/address';
+import { useRoute, useRouter } from 'vue-router';
+
 const titlen = ref('编辑地址')
 
 const username = ref('');
@@ -67,9 +70,7 @@ const dizhi = ref('');
 const xxdizhi = ref('');
 const jzmianji = ref('');
 const blmianjii = ref('');
-const onSubmit = (values) => {
-    console.log('submit', values);
-};
+
 
 const checked = ref(false);
 
@@ -147,5 +148,35 @@ const onChange4 = ({ selectedValues }) => {
 };
 const onCancel4 = () => console.log('取消');
 
+const list = ref({
+        username: localStorage.getItem('username'),
+        name:'',
+        tel:'',
+        address:'',
+        tag:'0',
+    })
 
+const add_address = async (values) => {
+    const res = (await (address_add(values))).data
+}
+const change_tag = ()=>{
+    if(checked.value){
+        list.value.tag = "1"
+    }else{
+        list.value.tag = "0"
+    }
+}
+
+const router = useRouter()
+const onSubmit = (values) => {
+    list.value.name = values.name
+    list.value.tel = values.tel
+    list.value.address = values.address
+    console.log(list.value)
+    
+    // console.log('submit', values);
+    add_address(list.value)
+    router.push('/dzgl')
+
+};
 </script>
