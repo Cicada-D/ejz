@@ -6,11 +6,12 @@ var moment = require('moment')
 exports.create = (req, res) => {
   var myDate = new Date()
   const BidMessage = {
-    service: req.body.service,
     username: req.body.username,
+    service: req.body.service,
     address: req.body.address,
     date: req.body.date,
     comment: req.body.comment,
+    tel:req.body.tel,
     money: req.body.money,
     state: 1,
     num: "DH" + moment().format('YYYYMMDhhmmss') + "elpsycongroo",

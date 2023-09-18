@@ -14,21 +14,21 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     date: {
-      type: Sequelize.DATE,
-      get () {
-        return moment(this.getDataValue('date')).format('YYYY-MM-DD')
-      }
+      type: Sequelize.STRING,
     },
     comment: {
+      type: Sequelize.STRING
+    },
+    tel:{
       type: Sequelize.STRING
     },
     state: {
       type: Sequelize.INTEGER
     },
-    num: {
-      type: Sequelize.STRING
-    },
     money: {
+      type: Sequelize.INTEGER
+    },
+    num: {
       type: Sequelize.STRING
     },
     createdAt: {

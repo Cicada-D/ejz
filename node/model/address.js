@@ -15,6 +15,9 @@ module.exports = (sequelize, Sequelize) => {
     address: {
       type: Sequelize.STRING
     },
+    tag:{
+      type: Sequelize.STRING
+    },
     createdAt: {
       type: Sequelize.DATE,
       get () {
