@@ -15,3 +15,8 @@ export const bid_add = (params) => {
     }
   })
 }
+
+
+const get_all_bid = ()=>{
+  
+}

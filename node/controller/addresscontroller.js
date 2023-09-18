@@ -1,5 +1,5 @@
-const db = require("../model/index");
-const Addressmodel = db.addressmodel;
+const db = require("../model/index")
+const Addressmodel = db.addressmodel
 
 exports.create = (req, res) => {
   const AddressMessage = {
@@ -9,7 +9,7 @@ exports.create = (req, res) => {
     address: req.body.address,
     //tag 0非默认 TAG 1 默认地址
     tag: req.body.tag,
-  };
+  }
   Addressmodel.update(
     {
       tag: "0",
@@ -19,23 +19,19 @@ exports.create = (req, res) => {
         username: req.body.username,
       },
     }
+  ).then(
+    Addressmodel.create(AddressMessage)
+      .then((data) => {
+        res.send(Array(data))
+        console.log(data)
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: "创建信息出错",
+        })
+      })
   )
-    .then((data) => {
-      res.send("修改成功");
-    })
-    .then(
-      Addressmodel.create(AddressMessage)
-        .then((data) => {
-          res.send(Array(data));
-          console.log(data);
-        })
-        .catch((err) => {
-          res.status(500).send({
-            message: "创建信息出错",
-          });
-        })
-    );
-};
+}
 
 
 
@@ -49,11 +45,11 @@ exports.findAll = (req, res) => {
     },
   })
     .then((data) => {
-      res.send(data);
+      res.send(data)
     })
     .catch((err) => {
       res.status(500).send({
         message: "查询失败",
-      });
-    });
-};
+      })
+    })
+}

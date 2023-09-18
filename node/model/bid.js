@@ -19,14 +19,14 @@ module.exports = (sequelize, Sequelize) => {
     comment: {
       type: Sequelize.STRING
     },
-    tel:{
+    tel: {
       type: Sequelize.STRING
     },
     state: {
       type: Sequelize.INTEGER
     },
     money: {
-      type: Sequelize.INTEGER
+      type: Sequelize.DECIMAL(10, 2)
     },
     num: {
       type: Sequelize.STRING

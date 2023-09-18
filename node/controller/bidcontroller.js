@@ -4,14 +4,14 @@ const Bidmodel = db.bidmodel
 var moment = require('moment')
 //添加订单
 exports.create = (req, res) => {
-  var myDate = new Date()
+  console.log(req.body)
   const BidMessage = {
     username: req.body.username,
     service: req.body.service,
     address: req.body.address,
     date: req.body.date,
     comment: req.body.comment,
-    tel:req.body.tel,
+    tel: req.body.tel,
     money: req.body.money,
     state: 1,
     num: "DH" + moment().format('YYYYMMDhhmmss') + "elpsycongroo",
