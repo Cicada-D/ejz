@@ -5,19 +5,19 @@
     <van-tab title="普通订单">
       <van-tabs v-model:active="one_two" @click-tab="getall">
         <van-tab title="待确认">
-          <orderone v-for="forder in forders" :list="forder"></orderone>
+          <orderone v-for="forder in forders1" :list="forder"></orderone>
         </van-tab>
         <van-tab title="待服务">
-          <orderone v-for="forder in forders" :list="forder"></orderone>
+          <orderone v-for="forder in forders2" :list="forder"></orderone>
         </van-tab>
         <van-tab title="验收评价">
           <van-empty description="描述文字" />
         </van-tab>
         <van-tab title="已取消">
-          <orderone v-for="forder in forders" :list="forder"></orderone>
+          <orderone v-for="forder in forders3" :list="forder"></orderone>
         </van-tab>
         <van-tab title="全部">
-          <orderone v-for="forder in forders" :list="forder"></orderone>
+          <orderone v-for="forder in forders4" :list="forder"></orderone>
         </van-tab>
       </van-tabs>
     </van-tab>
@@ -36,20 +36,12 @@
     </van-tab>
   </van-tabs>
   <vantabber></vantabber>
-  <!-- <lunboone></lunboone> -->
-  <!-- <orderone></orderone> -->
-  <!-- <ordertwo></ordertwo> -->
-  <!-- <orderthree></orderthree> -->
-  <!-- <orderdetail></orderdetail> -->
+
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import orderone from '../views/order/orderone.vue'
-import ordertwo from '../views/order/ordertwo.vue'
-import orderthree from '../views/order/orderthree.vue'
-import lunboone from '../views/lunbo/lunboone.vue'
-import orderdetail from '../views/order/orderdetail.vue'
 import vantabber from './vantabber.vue'
 
 import {
@@ -61,19 +53,11 @@ import {
 const one = ref(0)
 const one_two = ref(0)
 const two = ref(0)
-const forders = ref([
-  // {
-  //   oid: 'J234123JNKSd23',
-  //   ty: '化纤地毯',
-  //   xdtime: '2020-1-3',
-  //   fwtime: '2020-1-7 09:09~2020-1-7 13:00',
-  //   dizhi: '江西省南昌市东华理工大学研一',
-  //   telephone: '1381381008',
-  //   zj: '800',
-  //   yh: '0',
-  //   yfje: '800',
-  // },
-])
+const forders1 = ref([])
+const forders2 = ref([])
+const forders3 = ref([])
+const forders4 = ref([])
+
 const getall = () => {
   if (one_two.value == 0) {
     get_ok_Bid()
@@ -92,7 +76,7 @@ const init_bid = async () => {
       username: localStorage.getItem('username'),
     })
   ).data
-  forders.value = res
+  forders4.value = res
 }
 const get_ok_Bid = async () => {
   const res = (
@@ -100,7 +84,7 @@ const get_ok_Bid = async () => {
       username: localStorage.getItem('username'),
     })
   ).data
-  forders.value = res
+  forders1.value = res
   console.log(res)
 }
 
@@ -110,8 +94,10 @@ const get_cancell = async () => {
       username: localStorage.getItem('username'),
     })
   ).data
-  forders.value = res
-  console.log('取消')
+  forders3.value = res
+  // console.log('取消')
+  console.log(res)
+
 }
 const get_wait = async () => {
   const res = (
@@ -119,8 +105,9 @@ const get_wait = async () => {
       username: localStorage.getItem('username'),
     })
   ).data
-  forders.value = res
-  console.log('等待')
+  forders2.value = res
+  // console.log('等待')
+  console.log(forders2.value)
 }
 get_ok_Bid()
 onMounted(() => {

@@ -14,6 +14,7 @@
   background-color: aliceblue;
   padding: 10px;
 }
+
 :deep(.van-icon-arrow:before) {
   content: '';
 }
@@ -22,34 +23,26 @@
 <template>
   <van-row justify="center">
     <van-col span="24" class="van-hairline--bottom">
-      <van-cell title="单元格" value="内容" />
+      <van-cell :title="title_t" :value="title_v" />
     </van-col>
     <van-col span="24" class="van-hairline--bottom">
       <van-cell is-link :to="ddxq">
         <!-- 使用 title 插槽来自定义标题 -->
         <template #title>
           <div class="van-multi-ellipsis--l2">
-            <span class="custom-title" style="color: rgb(206, 207, 207)"
-              >订单编号:</span
-            >
+            <span class="custom-title" style="color: rgb(206, 207, 207)">订单编号:</span>
             <span style="margin-left: 10px">{{ zorder.list.num }}</span>
           </div>
           <div class="van-multi-ellipsis--l2">
-            <span class="custom-title" style="color: rgb(206, 207, 207)"
-              >服务时间:</span
-            >
+            <span class="custom-title" style="color: rgb(206, 207, 207)">服务时间:</span>
             <span style="margin-left: 10px">{{ zorder.list.date }}</span>
           </div>
           <div class="van-multi-ellipsis--l2">
-            <span class="custom-title" style="color: rgb(206, 207, 207)"
-              >服务地址:</span
-            >
+            <span class="custom-title" style="color: rgb(206, 207, 207)">服务地址:</span>
             <span style="margin-left: 10px">{{ zorder.list.address }}</span>
           </div>
           <div class="van-multi-ellipsis--l2">
-            <span class="custom-title" style="color: rgb(206, 207, 207)"
-              >下单时间:</span
-            >
+            <span class="custom-title" style="color: rgb(206, 207, 207)">下单时间:</span>
             <span style="margin-left: 10px">{{ zorder.list.createdAt }}</span>
           </div>
         </template>
@@ -63,8 +56,8 @@
             <span class="jiage"> {{ zorder.list.money }} </span>
           </div>
         </template>
-        <template #value>
-          <van-button round size="small" color="chocolate"> 去付款 </van-button>
+        <template #value v-if="button">
+          <van-button ref="button" round size="small" color="chocolate"> {{ title_b }} </van-button>
         </template>
       </van-cell>
     </van-col>
@@ -78,7 +71,25 @@ import { ref } from 'vue'
 const zorder = defineProps({
   list: Object,
 })
-console.log(zorder.list)
+
+var button = ref(true)
+
+const title_t = ref(zorder.list.service)
+var title_v = ref()
+var title_b = ref()
+const change_v = () => {
+  if( zorder.list.state == '1') {
+    title_v = '待付款'
+    title_b = '去付款'
+  }else if ( zorder.list.state == '2') {
+    title_v = '待评价'
+    title_b = '去评价'
+  }else if ( zorder.list.state == '3') {
+    title_v = '已取消'
+    button = false
+  }
+}
+change_v()
 const ddxq = ref({
   name: 'order',
   query: {
@@ -91,4 +102,5 @@ const ddxq = ref({
     money: zorder.list.money,
   },
 })
+// change_bu()
 </script>
