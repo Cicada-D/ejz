@@ -8,16 +8,9 @@
 
 <script setup>
 import vannavbar from '../vannavbar.vue'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { get_address } from '../../api/address'
-import { onBeforeMount } from 'vue'
-import { onBeforeRouteUpdate } from "vue-router";
-//在setup中
-// onBeforeRouteUpdate((to) => {
-//       console.log(to, "=====");
-//     });
-
 
 const route = useRoute()
 const titlen = ref('地址管理')
@@ -50,8 +43,11 @@ const getaddress = async () => {
     }
   }
 }
-
 getaddress()
+
+onMounted(() => {
+  getaddress()
+})
 
 // const disabledList = [
 //     {

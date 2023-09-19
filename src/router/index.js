@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -81,24 +81,25 @@ const router = createRouter({
       component: () => import("../views/regist.vue"),
     },
   ],
-});
+})
 
 router.beforeEach((to, from, next) => {
-  console.log("前置路由守卫", to, from);
+  console.log("前置路由守卫", to, from)
   if (to.name === "orders") {
     if (localStorage.getItem("token") === "0") {
       //控制权限的具体规则
       console.log('1')
-      next(); //放行
+      next() //放行
     } else {
-      router.push("/login");
+      router.push("/login")
       console.log('2')
 
     }
   } else {
     console.log('3')
-    
-    next(); //放行
-  }}
-);
-export default router;
+
+    next() //放行
+  }
+}
+)
+export default router
