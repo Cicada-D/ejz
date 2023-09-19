@@ -15,9 +15,8 @@
 <script setup>
 import vannavbar from '../vannavbar.vue'
 import { ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 import { get_address } from '../../api/address'
-import { onBeforeMount } from 'vue'
 const route = useRoute()
 const titlen = ref('地址管理')
 const select_add = (item, index) => {
@@ -49,8 +48,9 @@ const getaddress = async () => {
     }
   }
 }
-onBeforeMount(async () => {
-  await getaddress()
+getaddress()
+onBeforeRouteUpdate(async () => {
+  getaddress()
 })
 
 // const disabledList = [

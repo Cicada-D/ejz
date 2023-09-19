@@ -132,6 +132,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 // const list = ref([
 //     {
@@ -154,16 +155,16 @@ import { ref } from 'vue'
 //         to: 'telephone'
 //     }
 // ])
-
+const route = useRoute()
 const orders = ref([
   {
-    oid: 'J234123JNKSd23',
-    ty: '化纤地毯',
-    xdtime: '2020-1-3',
-    fwtime: '2020-1-7 09:09~2020-1-7 13:00',
-    dizhi: '江西省南昌市东华理工大学研一',
-    telephone: '1381381008',
-    zj: '800',
+    oid: route.query.num,
+    ty: route.query.service,
+    xdtime: route.query.createdAt,
+    fwtime: route.query.date,
+    dizhi: route.query.address,
+    telephone: route.query.tel,
+    zj: route.query.money,
     yh: '0',
     yfje: '800',
   },
