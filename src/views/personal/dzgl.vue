@@ -2,14 +2,8 @@
 
 <template>
   <vannavbar :value="titlen"></vannavbar>
-  <van-address-list
-    v-model="chosenAddressId"
-    :list="list"
-    default-tag-text="默认"
-    @add="onAdd"
-    @edit="onEdit"
-    @select="select_add($event)"
-  />
+  <van-address-list v-model="chosenAddressId" :list="list" default-tag-text="默认" @add="onAdd" @edit="onEdit"
+    @select="select_add($event)" />
 </template>
 
 <script setup>
@@ -18,6 +12,13 @@ import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { get_address } from '../../api/address'
 import { onBeforeMount } from 'vue'
+import { onBeforeRouteUpdate } from "vue-router";
+//在setup中
+// onBeforeRouteUpdate((to) => {
+//       console.log(to, "=====");
+//     });
+
+
 const route = useRoute()
 const titlen = ref('地址管理')
 const select_add = (item, index) => {
@@ -49,9 +50,8 @@ const getaddress = async () => {
     }
   }
 }
-onBeforeMount(async () => {
-  await getaddress()
-})
+
+getaddress()
 
 // const disabledList = [
 //     {
@@ -66,5 +66,6 @@ const router = useRouter()
 const onAdd = () => {
   router.push('/tjxdz')
 }
-const onEdit = (item, index) => {}
+
+const onEdit = (item, index) => { }
 </script>

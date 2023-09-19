@@ -27,20 +27,11 @@
 </style>
 
 <template>
-  <van-nav-bar
-    title="标题"
-    left-text="返回"
-    left-arrow
-    @click-left="onClickLeft"
-  />
+  <van-nav-bar title="标题" left-text="返回" left-arrow @click-left="onClickLeft" />
   <van-row class="row" v-for="order in orders">
     <van-col span="24" style="background-color: rgb(209, 208, 206)">
       <van-row align="center">
-        <van-col
-          span="6"
-          class="head"
-          style="background-color: rgb(209, 208, 206)"
-        >
+        <van-col span="6" class="head" style="background-color: rgb(209, 208, 206)">
           服务信息
         </van-col>
       </van-row>
@@ -59,29 +50,25 @@
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.ty }}
         </van-col>
-      </van-row> </van-col
-    ><van-col span="24" class="van-hairline--bottom">
+      </van-row> </van-col><van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
         <van-col span="6" class="title"> 下单时间: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.xdtime }}
         </van-col>
-      </van-row> </van-col
-    ><van-col span="24" class="van-hairline--bottom">
+      </van-row> </van-col><van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
         <van-col span="6" class="title"> 服务时间: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.fwtime }}
         </van-col>
-      </van-row> </van-col
-    ><van-col span="24" class="van-hairline--bottom">
+      </van-row> </van-col><van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
         <van-col span="6" class="title"> 服务地址: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.dizhi }}
         </van-col>
-      </van-row> </van-col
-    ><van-col span="24" class="van-hairline--bottom">
+      </van-row> </van-col><van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
         <van-col span="6" class="title"> 联系电话: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
@@ -94,11 +81,7 @@
   <van-row class="row" v-for="order in orders">
     <van-col span="24" style="background-color: rgb(209, 208, 206)">
       <van-row align="center">
-        <van-col
-          span="6"
-          class="head"
-          style="background-color: rgb(209, 208, 206)"
-        >
+        <van-col span="6" class="head" style="background-color: rgb(209, 208, 206)">
           支付信息
         </van-col>
       </van-row>
@@ -126,6 +109,15 @@
           {{ order.yfje }} 元
         </van-col>
       </van-row>
+    </van-col>
+    <van-col span="24">
+      <van-button >
+          取消订单
+      </van-button>
+      <van-button >
+          去付款
+      </van-button>
+
     </van-col>
   </van-row>
 </template>
