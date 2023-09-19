@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import orderone from '../views/order/orderone.vue'
 import ordertwo from '../views/order/ordertwo.vue'
 import orderthree from '../views/order/orderthree.vue'
@@ -74,7 +74,6 @@ const forders = ref([
   //   yfje: '800',
   // },
 ])
-
 const getall = () => {
   if (one_two.value == 0) {
     get_ok_Bid()
@@ -123,6 +122,8 @@ const get_wait = async () => {
   forders.value = res
   console.log('等待')
 }
-
 get_ok_Bid()
+onMounted(() => {
+  get_ok_Bid()
+})  
 </script>

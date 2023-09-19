@@ -14,9 +14,10 @@
 
 <script setup>
 import vannavbar from '../vannavbar.vue'
-import { ref } from 'vue'
-import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { get_address } from '../../api/address'
+
 const route = useRoute()
 const titlen = ref('地址管理')
 const select_add = (item, index) => {
@@ -49,7 +50,8 @@ const getaddress = async () => {
   }
 }
 getaddress()
-onBeforeRouteUpdate(async () => {
+
+onMounted(() => {
   getaddress()
 })
 
