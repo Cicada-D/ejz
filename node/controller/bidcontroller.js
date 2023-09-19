@@ -115,6 +115,7 @@ exports.change_bid = (req, res) => {
 }
 //取消订单
 exports.cancell_bid = (req, res) => {
+
   Bidmodel.update({
     state: 3
   },
