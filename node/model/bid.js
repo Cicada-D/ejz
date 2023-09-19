@@ -31,6 +31,9 @@ module.exports = (sequelize, Sequelize) => {
     num: {
       type: Sequelize.STRING
     },
+    reply: {
+      type: Sequelize.STRING
+    },
     createdAt: {
       type: Sequelize.DATE,
       get () {

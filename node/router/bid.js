@@ -13,8 +13,6 @@ router.get("/get_ok", bid.find_ok)
 router.get("/get_wait", bid.find_wait)
 //查询取消订单
 router.get("/get_cancell", bid.find_cancell)
-
-
 //付款修改订单
 router.post("/change_bid", bid.change_bid)
 //取消订单

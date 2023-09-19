@@ -33,9 +33,6 @@ const sliceArr = (arr, size) => {
 exports.findAll = (req, res) => {
   Servicemodel.findAll().then((data) => {
     let List = sliceArr(data, 8)
-    let itemList = {
-
-    }
     console.log(List)
     res.send(List)
   }).catch(err => {
@@ -44,6 +41,39 @@ exports.findAll = (req, res) => {
     })
   })
 }
+
+//找第一个
+exports.find_first = (req, res) => {
+  Servicemodel.findAll({
+    where: {
+      type: 1
+    }
+  }
+  ).then((data) => {
+    res.send(data)
+  }).catch(err => {
+    res.status(500).send({
+      message: "查询失败"
+    })
+  })
+}
+//找第二个
+exports.find_second = (req, res) => {
+  Servicemodel.findAll({
+    where: {
+      type: 2
+    }
+  }
+  ).then((data) => {
+
+    res.send(data)
+  }).catch(err => {
+    res.status(500).send({
+      message: "查询失败"
+    })
+  })
+}
+
 
 
 // item1: [
