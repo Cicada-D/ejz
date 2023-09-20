@@ -9,6 +9,13 @@ module.exports = (sequelize, Sequelize) => {
     title: {
       type: Sequelize.STRING
     },
+    price: {
+      type: Sequelize.DECIMAL(10, 2)
+    },
+    //1就是1 2就是2
+    type: {
+      type: Sequelize.INTEGER
+    },
     createdAt: {
       type: Sequelize.DATE,
       get () {
