@@ -49,7 +49,7 @@
                                 <div style="color: white; font-size: larger; margin-top: 5px;">
                                     15270089123
                                 </div>
-                                <div style="margin-top: 15px;">
+                                <div style="margin-top: 15px;" v-if="false">
                                     <img src="../assets//huiyuan.jpg" style="width: 100px;" alt="">
                                 </div>
                             </div>

@@ -45,7 +45,7 @@ import { useRoute, useRouter } from 'vue-router'
 const username = ref('')
 const password = ref('')
 const titlen = ref('登录')
-
+const router = useRouter()
 const show = ref(false)
 const Login_item = async (parmas) => {
   const res = (await Login(parmas)).data

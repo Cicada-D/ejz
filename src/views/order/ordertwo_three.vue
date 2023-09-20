@@ -59,7 +59,8 @@ const item = ref([
 ])
 
 var type_two
-const select_two = (cdata) => {
+var jiage_two
+const select_two = (cdata, index) => {
     type_two = cdata
 }
 
@@ -71,7 +72,8 @@ const yuyue = () => {
         router.push({
             path: '/ddtj',
             query: {
-                type: type_two
+                type: type_two,
+                jiage: jiage_two
             }
         })
     }

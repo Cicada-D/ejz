@@ -11,7 +11,7 @@ import vannavbar from '../vannavbar.vue'
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { get_address } from '../../api/address'
-
+const router = useRouter()
 const route = useRoute()
 const titlen = ref('地址管理')
 const select_add = (item, index) => {
@@ -22,6 +22,7 @@ const select_add = (item, index) => {
       type: route.query.type,
       address: item.address,
       tel: item.tel,
+      jiage: route.query.jiage
     },
   })
 }
@@ -57,7 +58,6 @@ onMounted(() => {
 //         address: '浙江省杭州市滨江区江南大道 15 号',
 //     },
 // ];
-const router = useRouter()
 
 const onAdd = () => {
   router.push('/tjxdz')

@@ -50,25 +50,41 @@
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.ty }}
         </van-col>
-      </van-row> </van-col><van-col span="24" class="van-hairline--bottom">
+      </van-row> 
+    </van-col>
+    <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
         <van-col span="6" class="title"> 下单时间: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.xdtime }}
         </van-col>
-      </van-row> </van-col><van-col span="24" class="van-hairline--bottom">
+      </van-row> 
+    </van-col>
+    <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
         <van-col span="6" class="title"> 服务时间: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.fwtime }}
         </van-col>
-      </van-row> </van-col><van-col span="24" class="van-hairline--bottom">
+      </van-row> 
+    </van-col>
+    <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
         <van-col span="6" class="title"> 服务地址: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.dizhi }}
         </van-col>
-      </van-row> </van-col><van-col span="24" class="van-hairline--bottom">
+      </van-row> 
+    </van-col>
+    <van-col span="24" class="van-hairline--bottom">
+      <van-row align="center">
+        <van-col span="6" class="title"> 联系电话: </van-col>
+        <van-col span="18" class="van-multi-ellipsis--l2">
+          {{ order.telephone }}
+        </van-col>
+      </van-row>
+    </van-col>
+    <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
         <van-col span="6" class="title"> 联系电话: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
@@ -117,7 +133,7 @@
             取消订单
           </van-button>
         </van-col>
-        <van-col span="10" >
+        <van-col span="10">
           <van-button style="background-color: rgb(255, 102, 0); color: white; border-radius: 20px;" @click="fk">
             去付款
           </van-button>
@@ -130,7 +146,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import{change_bid , cancell_bid} from '../../api/bid'
+import { change_bid, cancell_bid } from '../../api/bid'
 const route = useRoute()
 const router = useRouter()
 
@@ -152,13 +168,13 @@ const onClickLeft = () => history.back()
 
 
 const qx = () => {
-  cancell_bid({num:route.query.num})
+  cancell_bid({ num: route.query.num })
   console.log(route.query.num)
 
   router.push('/orders')
 }
 const fk = () => {
-  change_bid({num:route.query.num})
+  change_bid({ num: route.query.num })
   router.push('/orders')
 }
 </script>

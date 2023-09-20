@@ -28,7 +28,7 @@
                     </div>
                 </template>
                 <template #label>
-                    <van-button @click="select(item)" style="margin: 5px ;" round v-for="(item, index) in items.list.split(',')"> {{item}}</van-button>
+                    <van-button style="margin: 5px ;" round v-for="(item, index) in items.list.split(',')" @click="select(item,index)"> {{item}}</van-button>
                 </template>
             </van-cell>
         </van-col>
@@ -48,9 +48,10 @@ console.log(items.list.split(','))
 
 const emit = defineEmits(['func'])
 
-const select = (item) => {  
+const select = (item, index) => {  
     console.log(item)
-    emit('func', item)
+    console.log(index)
+    emit('func', item, index)
 }
 
 </script>
