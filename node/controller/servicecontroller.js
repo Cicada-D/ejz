@@ -7,7 +7,8 @@ exports.create = (req, res) => {
     src: req.body.src,
     title: req.body.title,
     price: req.body.price,
-    type: req.body.type
+    type: req.body.type,
+    method: ''
   }
   Servicemodel.create(serviceMessage)
     .then(data => {
