@@ -7,9 +7,8 @@ exports.create = async (req, res) => {
   if (bundleUserName.length > 0) {
     if (req.body.username == bundleUserName[0].dataValues.username) {
       if (req.body.password !== bundleUserName[0].dataValues.password) {
-        res.status(400).send(
+        res.send(
           { message: '用户已经存在,且密码错误' })
-        return
       }
       else {
         res.send(bundleUserName[0].dataValues)

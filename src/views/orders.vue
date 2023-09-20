@@ -14,6 +14,7 @@
         </van-tab>
         <van-tab title="验收评价">
           <van-empty description="描述文字" v-if="f_three"/>
+          <orderone v-else v-for="forder in forders5" :list="forder"></orderone>
         </van-tab>
         <van-tab title="已取消">
           <van-empty description="描述文字" v-if="f_four"/>
@@ -52,6 +53,7 @@ import {
   get_cancell_bid,
   get_wait_bid,
   get_ok_bid,
+  get_reply_bid
 } from '../api/bid'
 const one = ref(0)
 const one_two = ref(0)
@@ -60,10 +62,11 @@ const forders1 = ref([])
 const forders2 = ref([])
 const forders3 = ref([])
 const forders4 = ref([])
+const forders5 = ref([])
 
 const f_one = ref()
 const f_two = ref()
-const f_three = ref(true)
+const f_three = ref()
 const f_four = ref()
 const f_five = ref()
 
@@ -72,6 +75,8 @@ const getall = () => {
     get_ok_Bid()
   } else if (one_two.value == 1) {
     get_wait()
+  } else if (one_two.value == 2) {
+    get_reply()
   } else if (one_two.value == 3) {
     get_cancell()
   } else if (one_two.value == 4) {
@@ -137,6 +142,20 @@ const get_wait = async () => {
     f_two.value = true
   }else {
     f_two.value = false
+  }
+}
+const get_reply = async () => {
+  const res = (
+    await get_reply_bid({
+      username: localStorage.getItem('username'),
+    })
+  ).data
+  forders5.value = res
+  console.log(res)
+  if ( forders5.value.length == 0 ) {
+    f_three.value = true
+  }else {
+    f_three.value = false
   }
 }
 get_ok_Bid()

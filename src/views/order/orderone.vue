@@ -57,7 +57,7 @@
           </div>
         </template>
         <template #value v-if="button">
-          <van-button ref="button" round size="small" color="chocolate"> {{ title_b }} </van-button>
+          <van-button ref="button" round size="small" color="chocolate" @click="pay"> {{ title_b }} </van-button>
         </template>
       </van-cell>
     </van-col>
@@ -67,25 +67,28 @@
 <script setup>
 import { ref } from 'vue'
 // import { defineProps } from 'vue';
+import { change_bid ,cancell_bid, reply_change_bid} from '../../api/bid';
+import { useRoute, useRouter } from 'vue-router'
 
 const zorder = defineProps({
   list: Object,
 })
-
 var button = ref(true)
 
 const title_t = ref(zorder.list.service)
 var title_v = ref()
 var title_b = ref()
 const change_v = () => {
-  if( zorder.list.state == '1') {
+  if (zorder.list.state == '1') {
     title_v = '待付款'
     title_b = '去付款'
-  }else if ( zorder.list.state == '2') {
+  } else if (zorder.list.state == '2') {
     title_v = '待评价'
     title_b = '去评价'
-  }else if ( zorder.list.state == '3') {
+  } else if (zorder.list.state == '3') {
     title_v = '已取消'
+    button = false
+  }else if (zorder.list.state == '5') {
     button = false
   }
 }
@@ -100,7 +103,25 @@ const ddxq = ref({
     address: zorder.list.address,
     tel: zorder.list.tel,
     money: zorder.list.money,
+    comment: zorder.list.comment,
+    state: zorder.list.state
   },
 })
+
+
+const router = useRouter()
+const pay = () => {
+  if (zorder.list.state == '1') {
+    change_bid({ num: zorder.list.num })
+    router.go(0)
+  } else if (zorder.list.state == '2') {
+    reply_change_bid({num : zorder.list.num})
+    router.go(0)
+  } else if (zorder.list.state == '3') {
+    cancell_bid({num:zorder.list.num})
+    router.go(0)
+  }
+
+}
 // change_bu()
 </script>

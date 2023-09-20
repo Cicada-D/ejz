@@ -62,6 +62,8 @@ var type_two
 var jiage_two
 const select_two = (cdata, index) => {
     type_two = cdata
+    jiage_two = item.value[0].jiage.split(',')[index]
+    console.log(item.value[0].jiage.split(',')[index])
 }
 
 const yuyue = () => {

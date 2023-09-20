@@ -54,7 +54,7 @@
         placeholder="请输入留言" />
     </van-cell-group>
   </van-form>
-  <van-submit-bar :price="price" button-text="立即预约" tip-icon="after-sale" label="订单总额" text-align="left"
+  <van-submit-bar :price="price_true" button-text="立即预约" tip-icon="after-sale" label="订单总额" text-align="left"
     @submit="onSubmit">
   </van-submit-bar>
 
@@ -84,6 +84,7 @@ const showPopup = () => {
 }
 const messages = ref('')
 var price = ref(0)
+var price_true = ref(0)
 const route = useRoute()
 const type_name = route.query.type
 const address = ref(route.query.address)
@@ -121,7 +122,7 @@ const onSubmit = () => {
     date: select_date,
     comment: messages.value,
     tel: route.query.tel,
-    money: price,
+    money: price.value
   }
   if (value.value == '') {
     showToast({
@@ -142,9 +143,10 @@ const onSubmit = () => {
 
 }
 
-const all_price = (value) => {
-  price.value = route.query.jiage * value * 100
-  console.log(price)
+const all_price = (pfm) => {
+  price.value = route.query.jiage * pfm 
+  price_true.value = route.query.jiage * pfm * 100
+  console.log(route.query.jiage)
 }
 
 </script>

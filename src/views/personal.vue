@@ -47,7 +47,7 @@
                                 src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
                             <div :style="{ flex: 1, marginLeft: '16px' }">
                                 <div style="color: white; font-size: larger; margin-top: 5px;">
-                                    15270089123
+                                    {{ name }}
                                 </div>
                                 <div style="margin-top: 15px;" v-if="false">
                                     <img src="../assets//huiyuan.jpg" style="width: 100px;" alt="">
@@ -104,6 +104,9 @@
 import { ref, onMounted } from 'vue';
 import vantabber from './vantabber.vue';
 import { useRoute, useRouter } from 'vue-router';
+const name = ref(localStorage.getItem('username'))
+
+
 const items = ref([
     {
         src: '/src/assets/项目分类/我的/图片/我的-我的钱包.png',

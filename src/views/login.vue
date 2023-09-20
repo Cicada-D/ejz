@@ -46,17 +46,18 @@ const username = ref('')
 const password = ref('')
 const titlen = ref('登录')
 const router = useRouter()
-const show = ref(false)
+const show = ref()
 const Login_item = async (parmas) => {
   const res = (await Login(parmas)).data
-  if (!res) {
-    console.log('err')
-    showToast({
-      message: '账号密码错误',
+  console.log(res)
+  if (res.message == '用户已经存在,且密码错误') {
+    // console.log('err')
+    showToast({   
+      message: '用户已经存在,且密码错误',
       // position: 'top',
     })
   } else {
-    console.log(res)
+    // console.log(res)
     localStorage.setItem('username', res.username)
     localStorage.setItem('token', res.token)
     router.push('/orders')

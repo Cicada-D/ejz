@@ -31,7 +31,7 @@ exports.create = (req, res) => {
 }
 
 //查询所有订单
-//state 1 是未付款待确认 2是待服务 3 是取消
+//state 1 是未付款待确认 2是待服务 3 是取消  5是待评价
 exports.findAll = (req, res) => {
   Bidmodel.findAll({
     where: {
@@ -91,14 +91,44 @@ exports.find_cancell = (req, res) => {
     })
   })
 }
-
-
-
-
+//查询待评价订单
+exports.find_reply = (req, res) => {
+  Bidmodel.findAll({
+    where: {
+      username: req.query.username,
+      state: 5,
+    }
+  }).then((data) => {
+    res.send(data)
+  }).catch(err => {
+    res.status(500).send({
+      message: "查询失败"
+    })
+  })
+}
 //付款修改订单
 exports.change_bid = (req, res) => {
   Bidmodel.update({
     state: 2
+  },
+    {
+      where: {
+        num: req.body.num
+      }
+    }).then((data) => {
+      res.send("修改成功")
+    }).catch(err => {
+      res.status(500).send({
+        message: "修改失败"
+      })
+    })
+}
+//去评价修改订单
+exports.reply_change_bid = (req, res) => {
+  console.log('1111111111111')
+  console.log(req.body.num)
+  Bidmodel.update({
+    state: 5
   },
     {
       where: {

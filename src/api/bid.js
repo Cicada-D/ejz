@@ -46,9 +46,31 @@ export const get_wait_bid = (params) => {
   })
 }
 
+
+export const get_reply_bid = (params) => {
+  return request({
+    url: '/bid/get_reply',
+    method: "GET",
+    params
+  })
+}
+
+
+
+
 export const change_bid = (params) => {
   return request({
     url: '/bid/change_bid',
+    method: "POST",
+    data: {
+      num: params.num
+    }
+  })
+}
+
+export const reply_change_bid = (params) => {
+  return request({
+    url: '/bid/reply_change_bid',
     method: "POST",
     data: {
       num: params.num

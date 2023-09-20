@@ -50,7 +50,7 @@
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.ty }}
         </van-col>
-      </van-row> 
+      </van-row>
     </van-col>
     <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
@@ -58,7 +58,7 @@
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.xdtime }}
         </van-col>
-      </van-row> 
+      </van-row>
     </van-col>
     <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
@@ -66,7 +66,7 @@
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.fwtime }}
         </van-col>
-      </van-row> 
+      </van-row>
     </van-col>
     <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
@@ -74,7 +74,7 @@
         <van-col span="18" class="van-multi-ellipsis--l2">
           {{ order.dizhi }}
         </van-col>
-      </van-row> 
+      </van-row>
     </van-col>
     <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
@@ -86,9 +86,9 @@
     </van-col>
     <van-col span="24" class="van-hairline--bottom">
       <van-row align="center">
-        <van-col span="6" class="title"> 联系电话: </van-col>
+        <van-col span="6" class="title"> 留言: </van-col>
         <van-col span="18" class="van-multi-ellipsis--l2">
-          {{ order.telephone }}
+          {{ order.comment }}
         </van-col>
       </van-row>
     </van-col>
@@ -129,13 +129,13 @@
     <van-col span="24">
       <van-row justify="space-around">
         <van-col span="10">
-          <van-button style="background-color: white; border-radius: 20px;" @click="qx">
-            取消订单
+          <van-button  v-if="button_one" style="background-color: white; border-radius: 20px;" @click="qx">
+            {{ title_a }}
           </van-button>
         </van-col>
-        <van-col span="10">
-          <van-button style="background-color: rgb(255, 102, 0); color: white; border-radius: 20px;" @click="fk">
-            去付款
+        <van-col span="10" >
+          <van-button v-if="button_two" style="background-color: rgb(255, 102, 0); color: white; border-radius: 20px;" @click="fk">
+            {{ title_c }}
           </van-button>
         </van-col>
       </van-row>
@@ -160,7 +160,9 @@ const orders = ref([
     telephone: route.query.tel,
     zj: route.query.money,
     yh: '0',
-    yfje: '800',
+    yfje: route.query.money,
+    comment: route.query.comment,
+    state: route.query.state
   },
 ])
 const onClickLeft = () => history.back()
@@ -177,4 +179,27 @@ const fk = () => {
   change_bid({ num: route.query.num })
   router.push('/orders')
 }
+
+var title_a = ref()
+var title_c = ref()
+var button_one = ref(true)
+var button_two = ref(true)
+
+const change_t = () => {
+  console.log(orders.value[0].state)
+  if (orders.value[0].state == '1') {
+    title_a.value = '取消订单'
+    title_c.value = '去付款'
+  } else if (orders.value[0].state == '2') {
+    title_c = '去评价'
+    button_one= false
+  } else if (orders.value[0].state == '3') {
+    button_one = false
+    button_two = false
+  } else if (orders.value[0].state == '5') {
+    button_one = false
+    button_two = false
+  }
+}
+change_t()
 </script>
