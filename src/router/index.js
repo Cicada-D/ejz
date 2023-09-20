@@ -51,6 +51,16 @@ const router = createRouter({
       component: () => import("../views/order/ordertwo_three.vue"),
     },
     {
+      path: "/login",
+      name: "login",
+      component: () => import("../views/login.vue"),
+    },
+    {
+      path: "/regist",
+      name: "regist",
+      component: () => import("../views/regist.vue"),
+    },
+    {
       path: "/wdqb",
       name: "wdqb",
       component: () => import("../views/personal/wdqb.vue"),
@@ -71,15 +81,20 @@ const router = createRouter({
       component: () => import("../views/personal/ddtj.vue"),
     },
     {
-      path: "/login",
-      name: "login",
-      component: () => import("../views/login.vue"),
+      path: '/sat',
+      name: 'sat',
+      component: () => import('../views/personal/sat.vue')
     },
     {
-      path: "/regist",
-      name: "regist",
-      component: () => import("../views/regist.vue"),
+      path: '/option',
+      name: 'option',
+      component: () => import('../views/personal/option.vue')
     },
+    {
+      path: '/zshy',
+      name: 'zshy',
+      component: () => import('../views/personal/zshy.vue')
+    }
   ],
 })
 

@@ -73,7 +73,7 @@
                     <van-col span="20">
                         我的售后
                     </van-col>
-                    <van-col span="5" v-for="key in items1" style="text-align: center;" @click="changeroute()">
+                    <van-col span="5" v-for="key in items1" style="text-align: center;" @click="changeroute(key.name)">
                         <van-image width="40px" height="40px" fit="contain" :src="key.src" />
                         <div>{{ key.title }}</div>
                     </van-col>
@@ -90,7 +90,7 @@
                         <van-cell title="我的合同" is-link />
                     </van-col>
                     <van-col span="24" class="cellc">
-                        <van-cell title="设置" is-link />
+                        <van-cell title="设置" is-link @click="sz('/sat')"/>
                     </van-col>
                 </van-row>
             </van-col>
@@ -113,7 +113,7 @@ const items = ref([
     {
         src: '/src/assets/项目分类/我的/图片/专属会员.png',
         title: '专属会员',
-        name: ''
+        name: '/zshy'
     }, {
         src: '/src/assets/项目分类/我的/图片/充值兑换.png',
         title: '充值兑换'
@@ -143,7 +143,8 @@ const items1 = ref([
     },
     {
         src: '/src/assets/项目分类/我的/图片/意见反馈.png',
-        title: '意见反馈'
+        title: '意见反馈',
+        name: '/option'
     }, {
         src: '/src/assets/项目分类/我的/图片/常见问题.png',
         title: '常见问题'
@@ -158,4 +159,10 @@ const router = new useRouter()
 const changeroute = (name) => {
     router.push(name)
 }
+
+const sz = (name) => {
+    router.push(name)
+    
+}
 </script>
+
