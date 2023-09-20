@@ -19,7 +19,6 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 
 db.servicemodel = require("./service")(sequelize, Sequelize)
-db.addressmodel = require("./address")(sequelize, Sequelize)
 db.usermodel = require('./user')(sequelize, Sequelize)
 db.bidmodel = require("./bid")(sequelize, Sequelize)
 // db.addressmodel = require("./address")(sequelize, Sequelize)

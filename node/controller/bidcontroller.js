@@ -14,6 +14,7 @@ exports.create = (req, res) => {
     tel: req.body.tel,
     money: req.body.money,
     state: 1,
+    reply: '',
     reply:'',
     num: "DH" + moment().format('YYYYMMDhhmmss') + "elpsycongroo",
   }
@@ -32,7 +33,6 @@ exports.create = (req, res) => {
 //查询所有订单
 //state 1 是未付款待确认 2是待服务 3 是取消
 exports.findAll = (req, res) => {
-  console.log(req.body)
   Bidmodel.findAll({
     where: {
       username: req.query.username
@@ -48,14 +48,12 @@ exports.findAll = (req, res) => {
 
 //查询待确认订单
 exports.find_ok = (req, res) => {
-  console.log(req.query)
   Bidmodel.findAll({
     where: {
       username: req.query.username,
       state: 1,
     }
   }).then((data) => {
-    console.log(data)
     res.send(data)
   }).catch(err => {
     res.status(500).send({

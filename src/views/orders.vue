@@ -40,7 +40,6 @@
     </van-tab>
   </van-tabs>
   <vantabber></vantabber>
-
 </template>
 
 <script setup>
@@ -143,5 +142,5 @@ const get_wait = async () => {
 get_ok_Bid()
 onMounted(() => {
   get_ok_Bid()
-})  
+})
 </script>

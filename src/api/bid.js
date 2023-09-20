@@ -50,8 +50,8 @@ export const change_bid = (params) => {
   return request({
     url: '/bid/change_bid',
     method: "POST",
-    data:{
-      num:params.num
+    data: {
+      num: params.num
     }
   })
 }
@@ -60,8 +60,8 @@ export const cancell_bid = (params) => {
   return request({
     url: '/bid/cancell_bid',
     method: "POST",
-    data:{
-      num:params.num
+    data: {
+      num: params.num
     }
   })
 }
