@@ -2,8 +2,14 @@
 
 <template>
   <vannavbar :value="titlen"></vannavbar>
-  <van-address-list v-model="chosenAddressId" :list="list" default-tag-text="默认" @add="onAdd" @edit="onEdit"
-    @select="select_add($event)" />
+  <van-address-list
+    v-model="chosenAddressId"
+    :list="list"
+    default-tag-text="默认"
+    @add="onAdd"
+    @edit="onEdit"
+    @select="select_add($event)"
+  />
 </template>
 
 <script setup>
@@ -63,5 +69,5 @@ const onAdd = () => {
   router.push('/tjxdz')
 }
 
-const onEdit = (item, index) => { }
+const onEdit = (item, index) => {}
 </script>

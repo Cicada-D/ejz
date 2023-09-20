@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     price: {
-      type: Sequelize.DECIMAL(10, 2)
+      type: Sequelize.STRING
     },
     //1就是1 2就是2
     type: {
