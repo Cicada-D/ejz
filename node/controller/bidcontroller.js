@@ -14,6 +14,7 @@ exports.create = (req, res) => {
     tel: req.body.tel,
     money: req.body.money,
     state: 1,
+    reply:'',
     num: "DH" + moment().format('YYYYMMDhhmmss') + "elpsycongroo",
   }
   Bidmodel.create(BidMessage)

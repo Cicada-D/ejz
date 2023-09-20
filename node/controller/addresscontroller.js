@@ -38,16 +38,15 @@ exports.create = (req, res) => {
 
 
 exports.findAll = (req, res) => {
+  console.log("111111111111111")
   console.log(req.query)
   Addressmodel.findAll({
     where: {
-      username: req.query.username,
-    },
-  })
-    .then((data) => {
+      username: req.query.username
+    }
+  }).then((data) => {
       res.send(data)
-    })
-    .catch((err) => {
+    }).catch((err) => {
       res.status(500).send({
         message: "查询失败",
       })
