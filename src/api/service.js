@@ -1,6 +1,6 @@
 import request from "./request"
 
-export const get_Service_List = () => {
+export const get_Service_List = (params) => {
   return request({
     url: '/service/getItem',
     method: "GET",
@@ -8,7 +8,7 @@ export const get_Service_List = () => {
   })
 }
 
-export const get_first_Service_List = () => {
+export const get_first_Service_List = (params) => {
   return request({
     url: '/service/get_first_Item',
     method: "GET",
@@ -17,7 +17,7 @@ export const get_first_Service_List = () => {
 }
 
 
-export const get_second_List = () => {
+export const get_second_List = (params) => {
   return request({
     url: '/service/get_second_Item',
     method: "GET",

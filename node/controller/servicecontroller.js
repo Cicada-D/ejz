@@ -5,7 +5,9 @@ const Servicemodel = db.servicemodel
 exports.create = (req, res) => {
   const serviceMessage = {
     src: req.body.src,
-    title: req.body.title
+    title: req.body.title,
+    price: req.body.price,
+    type: req.body.type
   }
   Servicemodel.create(serviceMessage)
     .then(data => {

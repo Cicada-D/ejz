@@ -36,7 +36,6 @@
     </van-tab>
   </van-tabs>
   <vantabber></vantabber>
-
 </template>
 
 <script setup>
@@ -97,7 +96,6 @@ const get_cancell = async () => {
   forders3.value = res
   // console.log('取消')
   console.log(res)
-
 }
 const get_wait = async () => {
   const res = (
@@ -112,5 +110,5 @@ const get_wait = async () => {
 get_ok_Bid()
 onMounted(() => {
   get_ok_Bid()
-})  
+})
 </script>
