@@ -49,7 +49,7 @@
                                 <div style="color: white; font-size: larger; margin-top: 5px;">
                                     {{ name }}
                                 </div>
-                                <div style="margin-top: 15px;" v-if="false">
+                                <div style="margin-top: 15px;" v-if="token == '1'">
                                     <img src="../assets//huiyuan.jpg" style="width: 100px;" alt="">
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ import vantabber from './vantabber.vue';
 import { useRoute, useRouter } from 'vue-router';
 const name = ref(localStorage.getItem('username'))
 
-
+const token = localStorage.getItem('token')
 const items = ref([
     {
         src: '/src/assets/项目分类/我的/图片/我的-我的钱包.png',

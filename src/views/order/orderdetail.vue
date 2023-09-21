@@ -146,7 +146,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { change_bid, cancell_bid } from '../../api/bid'
+import { change_bid, cancell_bid,reply_change_bid } from '../../api/bid'
 const route = useRoute()
 const router = useRouter()
 
@@ -176,7 +176,15 @@ const qx = () => {
   router.push('/orders')
 }
 const fk = () => {
+  // console.log(orders.value[0].state)
+if ( orders.value[0].state == '1'){
   change_bid({ num: route.query.num })
+
+}else if (orders.value[0].state == '2'){
+  reply_change_bid({num : route.query.num})
+  console.log(route.query.num)
+}
+
   router.push('/orders')
 }
 
@@ -192,6 +200,7 @@ const change_t = () => {
     title_c.value = '去付款'
   } else if (orders.value[0].state == '2') {
     title_c = '去评价'
+
     button_one= false
   } else if (orders.value[0].state == '3') {
     button_one = false

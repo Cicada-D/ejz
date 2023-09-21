@@ -32,3 +32,37 @@ exports.create = async (req, res) => {
       })
   }
 }
+
+
+
+
+exports.get_token = (req, res) => {
+  Usermodel.findAll({
+    where: {
+      username: req.query.username,
+    }
+  }).then((data) => {
+    res.send(data)
+  }).catch(err => {
+    res.status(500).send({
+      message: "查询失败"
+    })
+  })
+}
+//付款修改token
+exports.token_add = (req, res) => {
+  Usermodel.update({
+    token: '1'
+  },
+    {
+      where: {
+        username: req.body.username
+      }
+    }).then((data) => {
+      res.send("修改成功")
+    }).catch(err => {
+      res.status(500).send({
+        message: "修改失败"
+      })
+    })
+}
