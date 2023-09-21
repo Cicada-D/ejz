@@ -157,7 +157,7 @@
               span="6"
               v-for="key in item"
               style="text-align: center; margin-bottom: 10px"
-              @click="changeroute(key.title, key.type, key.jiage)"
+              @click="changeroute(key.title, key.method, key.price)"
             >
               <!-- <van-icon size="30" class="iconfont" class-prefix='icon' :name='key.src' /> -->
               <van-image
@@ -246,8 +246,9 @@ let items = ref()
 const init_Item_List = async () => {
   const res = (await get_Service_List()).data
   items.value = res
-  items.value[0][0].type = '无家具装修,有家具装修,别墅开荒保洁'
-  items.value[0][0].jiage = '50,80,100'
+  console.log(items.value)
+  // items.value[0][0].type = '无家具装修,有家具装修,别墅开荒保洁'
+  // items.value[0][0].jiage = '50,80,100'
   // console.log(items.value[0][0].type.split(','))
 }
 
@@ -307,13 +308,13 @@ const list = ref([
 // const that = this
 const router = useRouter()
 
-const changeroute = (name, ttype, jiage) => {
+const changeroute = (name, method, price) => {
   router.push({
     name: 'two_three',
     query: {
       title: name,
-      ttype: ttype,
-      jiage: jiage,
+      ttype: method,
+      jiage: price,
     },
   })
 }
