@@ -58,7 +58,7 @@ export default {
   setup() {
 
     const router = useRouter()
-    localStorage.setItem('token', 123)
+    // localStorage.setItem('token', 123)
     const onClickLeft = () => history.back();
     const tuichu = () => {
       localStorage.clear('token')
