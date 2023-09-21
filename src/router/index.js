@@ -94,6 +94,11 @@ const router = createRouter({
       path: '/zshy',
       name: 'zshy',
       component: () => import('../views/personal/zshy.vue')
+    },
+    {
+      path:'/search',
+      name:'search',
+      component:()=>import('../views/search.vue')
     }
   ],
 })

@@ -131,6 +131,7 @@
               shape="round"
               background=" rgb(255, 102, 0)"
               placeholder="请输入搜索关键词"
+              @focus = "crouter"
             />
           </van-col>
         </van-row>
@@ -324,4 +325,10 @@ const lunbotu = ref([
     src: '/src/assets/项目分类/1.png',
   },
 ])
+
+
+
+const crouter = ( ) => {
+  router.push('/search')
+}
 </script>
