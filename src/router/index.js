@@ -100,7 +100,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   console.log("前置路由守卫", to, from)
-  if (to.name === "orders" || to.name == 'personal') {
+  if (to.name === "orders" || to.name == 'personal'||to.name=='ddtj') {
     if (localStorage.getItem("token") === "0") {
       //控制权限的具体规则
       console.log('1')
