@@ -104,9 +104,21 @@
 import { ref, onMounted } from 'vue';
 import vantabber from './vantabber.vue';
 import { useRoute, useRouter } from 'vue-router';
+import { get_token } from '../api/token'
 const name = ref(localStorage.getItem('username'))
 
-const token = localStorage.getItem('token')
+var token = ref('') 
+
+
+onMounted(() => {
+    gettoken()
+})
+const gettoken = async ()=>{
+    token.value = (await get_token({username:localStorage.getItem('username')})).data
+    console.log(token.value)
+    localStorage.setItem('token',token.value[0].token)
+    token.value = token.value[0].token
+}
 const items = ref([
     {
         src: '/src/assets/项目分类/我的/图片/我的-我的钱包.png',
